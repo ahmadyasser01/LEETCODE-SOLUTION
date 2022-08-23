@@ -17,5 +17,9 @@ public:
         }
         return ans;
     }
-
+/**
+idea is to do bfs by sliding window keep track of left and right 
+where right is the max steps can be taken and we keep do this untill r becomes more than last index
+each step is considered a jump
+**/
 };
