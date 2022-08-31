@@ -1,19 +1,19 @@
 class Solution {
 public:
     map <pair<int,int>,int> dp;
-    int backtrack(vector<int>& nums, int target,int i,int total)
+    int backtrack(vector<int>& nums, int target,int i)
     {
         if(i==nums.size())
         {
-            return total == target?1:0;
+            return target ==0 ?1:0;
         }
-        if(dp.find({i,total})!=dp.end()) return dp[{i,total}];
+        if(dp.find({i,target})!=dp.end()) return dp[{i,target}];
         
-         dp[{i,total}] = backtrack(nums,target,i+1,total+nums[i]) +
-             backtrack(nums,target,i+1,total-nums[i]);
-        return dp[{i,total}];
+         dp[{i,target}] = backtrack(nums,target+nums[i],i+1) +
+             backtrack(nums,target-nums[i],i+1);
+        return dp[{i,target}];
     }
     int findTargetSumWays(vector<int>& nums, int target) {
-        return backtrack(nums,target,0,0);
+        return backtrack(nums,target,0);
     }
 };
